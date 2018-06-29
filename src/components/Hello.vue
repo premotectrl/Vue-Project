@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-let con: any = null;
+
 export default Vue.extend({
     props: {
         name: String, 
