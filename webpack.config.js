@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'hello-component.js'
+    filename: 'VTcomponent.js'
   },
   module: {
     rules: [
