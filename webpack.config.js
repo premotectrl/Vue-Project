@@ -1,25 +1,16 @@
-const path = require('path')
-const webpack = require('webpack')
-//const VueLoaderPlugin = require('vue-loader/lib/plugin')
+var path = require('path')
+var webpack = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/index.ts',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/dist/',
     filename: 'hello-component.js'
-  },
-  resolve: {
-    extensions: ['.ts','.tsx', '.js', '.vue', '.json'],
-    alias: {
-      'vue$': 'vue/dist/vue.js'
-    }
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        use: 'babel-loader'
-      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -57,13 +48,29 @@ module.exports = {
         ]
       }
     ]
-  }, 
+  },
+  resolve: {
+    extensions: ['.ts', '.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
+  },
+  devServer: {
+    historyApiFallback: true,
+    noInfo: true
+  },
+  performance: {
+    hints: false
+  },
   devtool: '#eval-source-map',
-  //devtool: 'inline-source-map',
+  plugins: [
+    // make sure to include the plugin for the magic
+    new VueLoaderPlugin()
+  ]
 }
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map';
+  module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
@@ -71,14 +78,12 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    /*new webpack.optimize.UglifyJsPlugin({
-      // uncomment to enable sourcemap
-      // sourceMap: true,
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       compress: {
         warnings: false
       }
-    }),*/
-    
+    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
