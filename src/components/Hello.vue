@@ -32,7 +32,7 @@ export default Vue.extend({
             enthusiasm: this.initialEnthusiasm,
             defaultStateCount:{
                 id: "?",
-                title: "Unknown.",
+                title: "Battery.",
                 icon:"assets/pose-graph.svg",
                 color:"#676c71",
                 value: 0,
