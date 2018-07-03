@@ -52,7 +52,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts','.tsx', '.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.js'
+      'vue$': 'vue/dist/vue.esm.js'
     }
   },
   devServer: {
@@ -62,6 +62,7 @@ module.exports = {
   performance: {
     hints: false
   },
+  mode: 'production',
   devtool: '#eval-source-map',
   plugins: [
     // make sure to include the plugin for the magic

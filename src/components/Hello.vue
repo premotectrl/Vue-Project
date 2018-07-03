@@ -17,7 +17,7 @@
 
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
 
 export default Vue.extend({
@@ -25,9 +25,9 @@ export default Vue.extend({
         name: String, 
         initialEnthusiasm: Number,
         DataObject: [],
-    },
+    }
 
-    data: function() {
+  /*  data: function() {
         return {
             enthusiasm: this.initialEnthusiasm,
             defaultStateCount:{
@@ -40,14 +40,14 @@ export default Vue.extend({
             },
             state: this.DataObject
         }
-    },
+    }, */
     /*
     data(): DataObject  {
         return{   
             detail: []
         };
     }, */
-    methods: {
+/*    methods: {
         increment() { this.enthusiasm++; },
         decrement() {
             if (this.enthusiasm > 1) {
@@ -65,21 +65,21 @@ export default Vue.extend({
         if(this.state == undefined){
             this.state = this.defaultStateCount;
         }
-    }
+    } */
 });
 
 //interface DataObject{
  // detail: AGVStateCount[]
 //}
 
-interface AGVStateCount {
+/*interface AGVStateCount {
     id: string,
     title: string,
     icon:string,
     color:string,
     value: number,
     count: number
-}
+} */
 </script>
 
 <style>
