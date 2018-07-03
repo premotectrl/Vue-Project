@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'hello-component.js'
+    filename: 'hello-component1.js'
   },
   resolve: {
     extensions: ['.ts','.tsx', '.js', '.vue', '.json'],
