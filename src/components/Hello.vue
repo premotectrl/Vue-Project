@@ -10,7 +10,9 @@
 
 </template>
 
-<script>
+<script lang = "ts">
+//import Vue from 'vue'
+const Vue = require('vue')
 export default {
   props: {
     facebook: { type: Boolean, default: true },
@@ -18,9 +20,9 @@ export default {
     gplus: { type: Boolean, default: true }
   },
   methods: {
-    share ($event) {
+   /* share ($event) {
       window.alert('Share on ' + $event.target.innerHTML);
-    }
+    } */
   }
 }
 </script>
