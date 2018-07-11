@@ -6,12 +6,12 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'hello-component.js'
+    filename: 'VStateCount.js'
   },
   resolve: {
     extensions: ['.ts','.tsx', '.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.js'
+      'vue$': 'vue/dist/vue.esm.js'
     }
   },
   module: {
@@ -75,13 +75,13 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    /*new webpack.optimize.UglifyJsPlugin({
+   /* new webpack.optimize.UglifyJsPlugin({
       // uncomment to enable sourcemap
       // sourceMap: true,
       compress: {
         warnings: false
       }
-    }),*/
+    }), */
     
     new webpack.LoaderOptionsPlugin({
       minimize: true
