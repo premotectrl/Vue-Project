@@ -104,8 +104,10 @@ import {GUID} from './utils/utils';
            
         }
 
-        @Watch('updateGraph', {deep:true})
-         
+        @Watch('dataPoints', {deep:true})
+        updater(dataPoints){
+            updateGraph(this.donut, dataPoints);
+        }
 
        public updateGraph(chart:any, data: number[]) : void {
             Object.assign( chart.config.data.datasets[0].data , data);
