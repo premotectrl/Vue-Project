@@ -1,0 +1,59 @@
+@import '~bootstrap/scss/mixins';
+
+@mixin transition($val...) {
+  -webkit-transition: $val;
+  -moz-transition: $val;
+  -o-transition: $val;
+  transition: $val;
+}
+
+@mixin transform($val...){
+  -webkit-transform:  $val;
+  -moz-transform:     $val;
+  -ms-transform:      $val;
+  -o-transform:       $val;
+}
+
+@mixin user-select($select: none) {
+  -webkit-user-select:  $select;
+  -moz-user-select:     $select;
+  -ms-user-select:      $select;
+  user-select:          $select;
+}
+
+@mixin box-shadow($val...) {
+  -webkit-box-shadow: $val;
+  -moz-box-shadow: $val;
+  box-shadow: $val;
+}
+
+/**
+  params:
+    $bkg - normal background color
+    $txt - normal text color
+    $brd - normal border color
+    $bkg-roll - rollover background color
+    $txt-roll - rollover text color
+    $brd-roll - rollover border color
+    $bkg-disabled - disabled background color
+    $txt-disabled - disabled text color
+    $brd-disabled - disabled border color
+ */
+@mixin kuka-control-theme($bkg, $txt, $brd, $bkg-roll, $txt-roll, $brd-roll, $bkg-disabled, $txt-disabled, $brd-disabled) {
+  background-color: $bkg;
+  color: $txt;
+  fill: $txt !important;
+  border: 1px solid $brd;
+  &:hover {
+    background-color: $bkg-roll;
+    color: $txt-roll;
+    fill: $txt-roll !important;
+    border: 1px solid $brd-roll;
+  }
+  &:disabled {
+    background-color: $bkg-disabled;
+    color: $txt-disabled;
+    fill: $txt-disabled !important;
+    border: 1px solid $brd-disabled;
+  }
+}

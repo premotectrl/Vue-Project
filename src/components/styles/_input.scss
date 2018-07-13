@@ -1,0 +1,95 @@
+@import "variables";
+@import "mixins";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/input-group";
+
+.a-input {
+  &__container {
+    display: block;
+    position: relative;
+    margin-bottom: 35px;
+    @include media-breakpoint-up(sm) {
+      margin-bottom: 45px;
+    }
+    @include media-breakpoint-up(md){
+      margin-bottom: 55px;
+    }
+  }
+  &__field {
+    @extend .input !optional;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    z-index: 1;
+    padding-left: 0;
+    padding-right: 0;
+    vertical-align: top;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid $kuka-gray2;
+    text-overflow: ellipsis;
+    &--lateral-indent {
+      padding-left: 10px;
+      padding-right: 10px;
+      @include media-breakpoint-up(sm){
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  }
+  &__field--animated {
+    transition: background-color 0.3s, padding 0.3s, border 0.3s;
+    &:focus {
+      background: $kuka-gray5;
+      padding-left: 15px;
+      border-bottom: 2px solid transparent;
+    }
+    &:focus,
+    &.has-value {
+      + .a-input__label--animated {
+        top: 100%;
+        left: 0;
+        padding-top: 1px;
+        @include transform(scale3d(0.64, 0.64, 1));
+      }
+    }
+    &.has-value + .a-input__label--animated {
+      transition: none;
+    }
+  }
+  &__label {
+    @extend .input !optional;
+    color: $kuka-gray3;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding-top: 7px;
+    transform-origin: left top;
+    @include transform(scale3d(0.64, 0.64, 1));
+  }
+  &__label--animated {
+    @include user-select(none);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 2;
+    top: 0;
+    @include transform(scale3d(1, 1, 1));
+    -webkit-transition: -webkit-transform 0.3s, top 0.3s, padding 0.3s;
+    transition: transform 0.3s, top 0.3s, padding 0.3s;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+input:-webkit-autofill {
+  box-shadow: 0 0 0 100px $kuka-white inset;
+}
