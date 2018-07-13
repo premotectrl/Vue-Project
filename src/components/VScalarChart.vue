@@ -9,7 +9,9 @@
             <div class="legend-table">
                 <table align="left">
                     <tr v-for="(label, index) in labeld">
-                        <td><div class="legend-table-color" :style="{'background-color':displayColors[index]}"> icon </div></td>
+                        <td class="icon-col">
+                                <img class="legend-table-color" src="{{state.icon}}">
+                            </td>
                         <td class="legend-table-value" :style="{'background-color':displayColors[index]}">{{round(vDataPoints[index])}}%</td>
                         <td class="legend-table-label">{{ label }}</td>
                     </tr>
@@ -19,32 +21,32 @@
     </div>
 </template>
 
-<script>
-    import Chart from 'chart.js';
-   import {GUID} from './utils/utils';
+<script lang="ts">
+//import Vue from 'vue'
+import Component from  'vue-class-component'
+import { Vue, Prop, Watch } from "vue-property-decorator";
+import Chart from 'chart.js';
+import {GUID} from './utils/utils';
 
-    const updateGraph = (chart, data) => {
+  /* const updateGraph = (chart:any, data: any) => {
             Object.assign(chart.config.data.datasets[0].data, data);
             chart.update();
-        };
+    }; */
 
-    export default {
-        name: "v-scalar-chart",
-        props: {
-            labels: Array,
-            dataPoints: Array,
-            colors: Array,
-            title: String,
-        },
-        data() {
-            return {
-                id: null,
-                options: {
+    @Component
+    export default class ScalarChart extends Vue {
+        @Prop() labels!: string[]; 
+        @Prop() dataPoints!: number[]; 
+        @Prop() colors!: string[]; 
+        @Prop() title!: string; 
+        
+        id:string ="";
+        options = {
                     cutoutPercentage: 70,
-                    animation: {
+                   /* animation: {
                         animateRotate: false,
                         animateScale: false,
-                    },
+                    },*/
                     responsive: false,
                     legend: {
                         display: false,
@@ -52,28 +54,29 @@
                     tooltips: {
                         enabled: false,
                     },
-                },
-                donut: null,
-                labeld: [ 'a', 'b', 'c'],
-                vDataPoints: [10,30,70],
-                displayColors: this.colors ? this.colors : ['#6EC8A0', '#CF2027',
+                }
+        donut!: Chart;
+        labeld: String[] = [ 'a', 'b', 'c'];
+        vDataPoints =  [10,30,70];
+        displayColors = this.colors ? this.colors : ['#6EC8A0', '#CF2027',
                                                             '#285885', '#9F547D',
-                                                            '#FFCD00', '#FF5800'],
-            };
-        },
-        computed: {
-            chartId() {
+                                                            '#FFCD00', '#FF5800'];
+    
+
+   
+       // computed:
+        get  chartId(): string {
                 if (!this.id) {
                     this.id = GUID();
                 }
                 return this.id;
-            }
-        },
-        methods: {
-          round (num) {
+        }
+        // Other methods
+          
+        round (num:number) {
             return Math.round(num * 10)/10;
-          }
-        },
+        }
+     
         created(){
             if(this.labels != undefined){
                 this.labeld = this.labels;
@@ -81,9 +84,10 @@
             if(this.dataPoints != undefined){
                 this.vDataPoints = this.dataPoints;
             }
-        },
+        }
+
         mounted() {
-            const ctx = document.getElementById(this.chartId).getContext('2d');
+            const ctx = "";//document.getElementById(this.chartId).getContext('2d');
             const config = {
                 type: 'doughnut',
                 data: {
@@ -98,16 +102,23 @@
             this.donut = new Chart(ctx, config);
             this.donut.update();
            
-        },
-        watch: {
-            dataPoints: {
-                handler: function(data) {
-                    updateGraph(this.donut, data);
-                },
-                deep: true,
-            },
-        },
-    }
+        }
+
+        @Watch('updateGraph', {deep:true})
+         
+
+       public updateGraph(chart:any, data: number[]) : void {
+            Object.assign( chart.config.data.datasets[0].data , data);
+            chart.update();
+        }
+    
+       // @Watch('dataPoints', {deep:true}) 
+        
+        //updateGraph(this.donut, dataPoints);
+      
+       
+                   
+    };
 </script>
 
 <style lang="scss" scoped>

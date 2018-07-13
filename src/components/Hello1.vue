@@ -17,6 +17,7 @@ export default Vue.extend({
         name: String, 
         initialEnthusiasm: Number,
         DataObject: [],
+        test: []
     },
 
     data: function() {
@@ -48,6 +49,7 @@ export default Vue.extend({
         },
     },
     computed: {
+        
         exclamationMarks(): string {
             return Array(this.enthusiasm + 1).join('!');
         }
@@ -56,6 +58,7 @@ export default Vue.extend({
     mounted(){
         if(this.state == undefined){
             this.state = this.defaultStateCount;
+        
         }
     }
 });

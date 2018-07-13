@@ -11,4 +11,4 @@ import ScalarChart from './components/VScalarChart.vue';
 const Vue = require('vue/dist/vue')
 const VueCustomElement = require('vue-custom-element/dist/vue-custom-element');
 Vue.use(VueCustomElement);
-Vue.customElement('v-scalar-chart', ScalarChart);
+Vue.customElement('v-scalar-chart', new ScalarChart().$Options);

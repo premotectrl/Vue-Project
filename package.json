@@ -16,6 +16,7 @@
     "url": "https://github.com/kartsims/vue-customelement-bundler.git"
   },
   "devDependencies": {
+    "@types/chart.js": "^2.7.27",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
@@ -39,6 +40,7 @@
     "vue": "^2.5.16",
     "vue-custom-element": "^3.2.1",
     "vue-loader": "^15.2.4",
+    "vue-property-decorator": "^7.0.0",
     "vue-style-loader": "^2.0.5",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.16.0",
