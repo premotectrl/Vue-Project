@@ -4,11 +4,13 @@
         "sourceMap": true,
         "strict": true,
         "noImplicitReturns": false,
+        "noImplicitAny": true,
         "module": "none",
         "moduleResolution": "node",
         "target": "es6",
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": true,
+        "allowJs": true
     },
     "include": [
         "src/**/*"

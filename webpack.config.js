@@ -6,6 +6,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
   entry: './src/main.js',
   output: {
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/dist/',
     filename: 'VScalarChart.js'
   },
   resolve: {
@@ -14,6 +16,22 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js'
     }
   },
+  optimization: {
+    minimizer: [
+      // we specify a custom UglifyJsPlugin here to get source maps in production
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          compress: true,
+          ecma: 6,
+          mangle: true
+        },
+        sourceMap: false
+      })
+    ]
+  },
+ 
   module: {
     rules: [
       {
@@ -49,42 +67,38 @@ module.exports = {
           name: '[name].[ext]?[hash]'
         }
       },
+ 
       {
-        test: /\.scss$/,
+        test: /\.s[a|c]ss$/,
         use: [
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'sass-loader'
-          }
+         'vue-style-loader',
+         'css-loader',
+         'sass-loader'
         ]
       }
-     /* {
-        test: /\.s[a|c]ss$/,
-       
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ]
-      } */
     ]
   }, 
-  devtool: '#eval-source-map',
-  //devtool: 'inline-source-map',
+  //devtool: '#eval-source-map',
+  devtool: 'inline-source-map',
   plugins: [
     // make sure to include the plugin for the magic
-    new VueLoaderPlugin(),
-    new UglifyJsPlugin()
-  ]/*
-  externals: {
-    'chart.js': {
-        commonjs: "chart.js",
-        commonjs2: "chart.js",
-        amd: "chart.js",
-        root: "Chart",
-    }
-  } */
+    new VueLoaderPlugin()
+    //new UglifyJsPlugin()
+  ],
+  externals : {
+      moment: {
+          commonjs: "moment",
+          commonjs2: "moment",
+          amd: "moment",
+          root: "moment"
+      },
+      'lodash': {
+          commonjs: "lodash",
+          commonjs2: "lodash",
+          amd: "lodash",
+          root: "_",
+      },
+  }
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -102,7 +116,7 @@ if (process.env.NODE_ENV === 'production') {
       compress: {
         warnings: false
       }
-    }), */
+    }),*/
     
     new webpack.LoaderOptionsPlugin({
       minimize: true
