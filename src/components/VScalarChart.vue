@@ -82,11 +82,11 @@ import {GUID} from './utils/utils';
                     tooltips: {
                         enabled: false,
                     },
-                     elements: {
-                    arc: {
-                        borderWidth: 1
+                    elements: {
+                        arc: {
+                            borderWidth: 1
+                        }
                     }
-                }
                 }
         //donut!: Chart;
         default_safetyStateConf: AGVStateCountGroup = {
@@ -122,17 +122,16 @@ import {GUID} from './utils/utils';
      
         created(){
             //this._chartConfig = this.chartConfig;
-            if(!this.chartConfig){
+          /*  if(!this.chartConfig){
                 console.log("no config");
                 this._chartConfig = this.default_safetyStateConf;
                 //return;
             } else{
                  this._chartConfig = this.chartConfig;
             }
-            
             this._states = Array.from(this._chartConfig.kpis.values()); 
             this.preparedData = this.prepareData(this._chartConfig);
-            this._dataIsValid =  this.preparedData.isValid;
+            this._dataIsValid =  this.preparedData.isValid; */
            
         }
 
@@ -145,14 +144,15 @@ import {GUID} from './utils/utils';
         variate(){
             //if the data at component input gets changed by the parent , 
             //we expect chart updates
-            this.chartConfig = this._chartConfig;
-            this.chartConfig.title = "Vueeee change";
+            //this.chartConfig = this._chartConfig;
+            //this.chartConfig.title = "Vueeee change";
         }
     
         @Watch('chartConfig', {deep:true})
             updater(chartConfig:AGVStateCountGroup){
                 this._chartConfig = this.chartConfig;
                 let r = this.prepareData(this._chartConfig);
+                Object.assign(this._states, Array.from(this._chartConfig.kpis.values()));
                 this._dataIsValid = r.isValid;
                 this.updateGraph(this.chart, r.data, this._dataIsValid);
             } 
@@ -173,9 +173,8 @@ import {GUID} from './utils/utils';
             }
 
             return {
-        
                 isValid: isValid,
-                data: [10,20,30,20,10]// newDat
+                data: newDat//[10,20,30,20,10]// newDat
             }
         }
 
