@@ -4,6 +4,10 @@ Other
 
 https://bitbucket.org/kukaaustin/kuka-core-controls/downloads/
 
+imagePath: function () {
+  return require('~assets/' + this.country.name + '.jpg') // or @ // this is  a computed property
+}
+
 
 window.onload = function() {
   //Canvas initialization
