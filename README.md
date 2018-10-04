@@ -1,3 +1,14 @@
+Reactivity
+VUE: Reactivity:
+- data , props and computed properties are reactive
+- declare variables and initialise with empty or null values to automatically have them reactive..( remember currentstateData and historical data.. u can reassign the data property with in the computed property region..
+- create  fresh reactive objects instead of adding  new properties  to them, else the added properties will not be reactive or use vue.set(item, ‘qty’, 1) or  Vue.set(app.myArray, index, newVal);
+
+ometimes you may want to assign a number of properties to an existing object, for example using Object.assign() or _.extend(). However, new properties added to the object will not trigger changes. In such cases, create a fresh object with properties from both the original object and the mixin object:
+
+// instead of `Object.assign(this.someObject, { a: 1, b: 2 })`
+this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 }) —that way u have  created a fresh object
+
 # Vue-Project
 This a Vue play field
 Other
