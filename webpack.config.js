@@ -1,17 +1,17 @@
 const path = require('path')
 const webpack = require('webpack')
-//const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'hello-component.js'
+    filename: 'VScalarChart.js'
   },
   resolve: {
-    extensions: ['.ts','.tsx', '.js', '.vue', '.json'],
+    extensions: ['.ts','.tsx', '.js', '.vue', '.json', '.css', '.scss'],
     alias: {
-      'vue$': 'vue/dist/vue.js'
+      'vue$': 'vue/dist/vue.esm.js'
     }
   },
   module: {
@@ -50,16 +50,41 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      }
+     /* {
+        test: /\.s[a|c]ss$/,
+       
         use: [
           'vue-style-loader',
           'css-loader'
         ]
-      }
+      } */
     ]
   }, 
   devtool: '#eval-source-map',
   //devtool: 'inline-source-map',
+  plugins: [
+    // make sure to include the plugin for the magic
+    new VueLoaderPlugin(),
+    new UglifyJsPlugin()
+  ]/*
+  externals: {
+    'chart.js': {
+        commonjs: "chart.js",
+        commonjs2: "chart.js",
+        amd: "chart.js",
+        root: "Chart",
+    }
+  } */
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -71,13 +96,13 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    /*new webpack.optimize.UglifyJsPlugin({
+   /* new webpack.optimize.UglifyJsPlugin({
       // uncomment to enable sourcemap
       // sourceMap: true,
       compress: {
         warnings: false
       }
-    }),*/
+    }), */
     
     new webpack.LoaderOptionsPlugin({
       minimize: true

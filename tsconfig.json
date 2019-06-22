@@ -3,12 +3,18 @@
         "outDir": "./dist/",
         "sourceMap": true,
         "strict": true,
-        "noImplicitReturns": true,
-        "module": "es2015",
+        "noImplicitReturns": false,
+        "module": "none",
         "moduleResolution": "node",
-        "target": "es5"
+        "target": "es6",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     },
     "include": [
-        "./src/**/*"
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
     ]
 }

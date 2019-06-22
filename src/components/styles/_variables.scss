@@ -1,0 +1,119 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+// From kuka.com
+// colors (names from Frontify)
+$kuka-white:            #ffffff;
+
+$kuka-gray1:    		#676C71;
+$kuka-gray2: 			#989ea3;
+$kuka-gray3: 			#c6c8ca;
+$kuka-gray4:            #e8e9ea;
+$kuka-gray5: 			#f6f6f6;
+$kuka-gray6:			#737b82;
+$kuka-gray7:            #f0f0f1;
+
+$kuka-orange1:          #ff5800;
+$kuka-orange2:			#ff6f2f;
+$kuka-orange3:			#e1410d;
+$kuka-orange4:			#ff6000;
+
+$kuka-dark1:			#5a5a5a;
+$kuka-dark2:			#4D5155;
+
+$kuka-table-light:      #f5f5f6;
+$kuka-table-dark:       #ebeced;
+
+$kuka-bg-orange1:       #fe6c2b;
+$kuka-bg-orange2:       #fe6225;
+$kuka-bg-orange3:       #FFF8F5;
+$kuka-bg-orange4:       #E54F00;
+
+$kuka-error-red: 		#b40000;
+
+/**
+ * Typography-sizes
+ */
+$tinyFontSize: .40rem;
+$xxsmallFontSize: .50rem;
+$xsmallFontSize: .67rem;
+$smallFontSize: .83rem;
+$standardFontSize: .9rem;
+$mediumFontSize: 1rem;
+$largeFontSize: 1.17rem; // 12pt defined in main.scss on html element
+$xlargeFontSize: 1.33rem;
+$xxlargeFontSize: 1.67rem;
+$hugeFontSize: 2rem;
+$massiveFontSize: 3.5rem;
+
+/**
+  * Other sizes
+*/
+$fixed-card-height: 621px;
+$fixed-small-tile-body-height: 208px;
+
+/**
+  Core colors
+*/
+$kukaOrange: $kuka-orange1;
+$kukaGrayForAreas: $kuka-gray1;
+$kukaGrayForTypography: $kuka-gray1;
+$kukaGrayForLightTypography: $kuka-gray3;
+$kukaGrayForHover: #E6E7E8;
+$kukaGray80: #75787a;
+$kukaGray60: #A4A7AA;
+$kukaGray45: #BABDBF;
+$kukaGray30: #D1D3D5;
+$kukaGray26: #D8D9DA;
+$kukaGray20: #E1E2E3;
+$kukaGray13: #ECEDEE;
+$kukaGray10: #F0F0F1;
+$kukaGray05: #F4F6F8;
+$kukaGray03: #FAFAFB;
+$kukaWhite: $kuka-white;
+$kukaBlack: black;
+$kukaDarkBlue: #2B5885;
+$kukaDarkBlue50: #3E7EBF;
+$kukaLightBlue: #B8D0E8;
+$kukaRed: #C6323F;
+
+/**
+General color scheme
+*/
+$mainBodyBackgroundColor: $kukaGray20;
+$cardTitleColor: $kukaGrayForTypography;
+$cardBackgroundColor: $kukaWhite;
+$errorRed: $kukaOrange;
+$successGreen: #008617;
+$statusNominalColor: $kukaGrayForTypography;
+$errorBarTextColor: $kukaWhite;
+$tableBlue: $kukaDarkBlue50;
+$tableGreen: $successGreen;
+$standardSeparatorColor: $kukaGray60;
+$scollbarThumbColor : $kukaGray30;
+$whiteButtonBackground : $kukaWhite;
+$blackTextColor : $kukaBlack;
+$sectionTitleColor: $kukaBlack;
+$subpanelBorderColor : $kukaWhite;
+$popoverTextColor: $kukaGrayForTypography;
+$popoverBackgroundColor: $kukaWhite;
+$disabledGrey:#AFB4B7;
+
+/**
+Standard table colors
+*/
+$standardTableHeaderBackgroundColor: #F2F3F4;
+$standardTableHighlightBackgroundColor:$kukaGray30;
+$standardTableRowBackgroundColor: #F8F9FA;
+$standardTableHeaderForegroundColor: $kukaGrayForTypography;
+$standardTableRowForegroundColor: $kukaGrayForTypography;
+
+/* Animations */
+// If you change any of these, make the same changes to the ANIMATION constant in constants.js
+$reallyLongAnimationDuration: 2s;
+$longAnimationDuration: 0.5s;
+$standardAnimationDuration: 0.3s;
+$shortAnimationDuration: 0.1s;
+
+/* other sizes */
+$standardBorderRadius: 3px;
